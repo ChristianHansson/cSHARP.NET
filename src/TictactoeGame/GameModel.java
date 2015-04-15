@@ -26,8 +26,8 @@ public class GameModel extends Observable {
 	 * */
 	public void turnIsTrue(){
 		turn = false;
-		notifyObservers();
 		setChanged();
+		notifyObservers();
 	}
 	/*
 	 * Runs if value "turn" is false, meaning that its player two's turn.
@@ -35,17 +35,23 @@ public class GameModel extends Observable {
 	 * */
 	public void turnIsFalse(){
 		turn = true;
-		notifyObservers();
 		setChanged();
+		notifyObservers();
 	}
 	public void setPlayerOneName(String inName){
 		playerOne = inName;
-		notifyObservers();
 		setChanged();
+		notifyObservers();
 	}
 	public void setPlayerTwoName(String inName){
 		playerTwo = inName;
-		notifyObservers();
 		setChanged();
+		notifyObservers();
+	}
+	/* Set the game state to new game, resets all in model */
+	public void setNullGameState(){
+		playerOne = null;
+		playerTwo = null;
+		turn = true;
 	}
 }
