@@ -5,11 +5,44 @@ import java.util.Observable;
 
 public class GameModel extends Observable {
 
+	public String [] btnValues = new String[9];
+	public int [][] winCombos = new int[][] {{0,1,2},{3,4,5},{2,4,6}};
+	
+	public boolean win = false;
+	public void winBecomesTrue(String inPlayer){
+		win = true;
+		setChanged();
+		if(inPlayer == "X"){
+			notifyObservers(playerOne);
+		}else if(inPlayer == "O"){
+		notifyObservers(playerTwo);
+		}
+	}
+	public boolean checkForWin(){
+		return win;
+	}
+	
+	public void setBtnValue(int pos, String symbol){
+		btnValues[pos] = symbol;
+		setChanged();
+		notifyObservers();
+	}
 	/*
 	 * Represents players names.
 	 * */
 	public String playerOne;
 	public String playerTwo;
+	public boolean isPlayersSet = false;
+	public void playersIsSet(){
+		if(playerOne != null && playerTwo != null){		
+			isPlayersSet = true;
+			setChanged();
+			notifyObservers();
+		}
+	}
+	public boolean checkPlayerNames(){
+		return isPlayersSet;
+	}
 	/*
 	 * Variable that is true if its playerOne's turn
 	 * */
@@ -53,5 +86,6 @@ public class GameModel extends Observable {
 		playerOne = null;
 		playerTwo = null;
 		turn = true;
+		btnValues = null;
 	}
 }
