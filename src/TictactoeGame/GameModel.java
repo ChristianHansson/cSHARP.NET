@@ -5,6 +5,7 @@ import java.util.Observable;
 
 public class GameModel extends Observable {
 
+	
 	public String [] btnValues = new String[9];
 	public int [][] winCombos = new int[][] {{0,1,2},{3,4,5},{2,4,6}};
 	
@@ -86,6 +87,8 @@ public class GameModel extends Observable {
 		playerOne = null;
 		playerTwo = null;
 		turn = true;
-		btnValues = null;
+		for(int i = 0; i < btnValues.length; i++){
+			btnValues[i] = null;
+		}
 	}
 }
