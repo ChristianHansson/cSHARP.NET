@@ -22,6 +22,7 @@ public class GameControl implements ActionListener{
 				String playerTwo = (String)JOptionPane.showInputDialog("spelare två namn");
 				setPlayerNames(playerOne, playerTwo);
 				_GM.playersIsSet();
+				_GM.newGameOngoing();
 			}else{
 				if(_GM.checkPlayerNames()){				
 					if(_GM.turn){
@@ -37,7 +38,7 @@ public class GameControl implements ActionListener{
 						temp.setEnabled(false);
 						temp.setText(_GM.btnValues[tempPos]);
 					}
-					checkForWin();
+					checkForWinControl();
 				}else{
 					JOptionPane.showMessageDialog(null, "Du måste skapa nytt spel, och fylla i användarnamn");
 				}
@@ -46,9 +47,8 @@ public class GameControl implements ActionListener{
 			System.out.println(e.getMessage());
 		}
 	}
-	public void checkForWin(){
+	public void checkForWinControl(){
 		for(int outer = 0; outer < _GM.winCombos.length; outer++){
-			
 			if(_GM.btnValues[_GM.winCombos[outer][0]] == _GM.btnValues[_GM.winCombos[outer][1]] &&
 					_GM.btnValues[_GM.winCombos[outer][1]] == _GM.btnValues[_GM.winCombos[outer][2]] &&
 						_GM.btnValues[_GM.winCombos[outer][2]] != null){
