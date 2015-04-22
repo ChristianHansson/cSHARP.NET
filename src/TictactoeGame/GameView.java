@@ -16,12 +16,20 @@ import javax.swing.JPanel;
 
 public class GameView extends JFrame implements Observer{
 	
-	private GameControl _GC;
+	/* All the variables for View class. Not yet initialized */
+	private GameControl _GC; // Private attribute of the class GameControl, not yet initialized.
+	/* All the panels that will make the layout */
 	private JPanel leftPanel, gameBoard, playerOneInfo,playerTwoInfo,startGameBtnPanel;
-	
+	/* Every Label that will hold text(displayed to the user) */
 	private JLabel playerOneTitleText, playerOne,playerOneMarker,playerTwoTitleText, playerTwo, playerTwoMarker,currentPlayer;
+	/* Buttons, one for the actual game and one for function start new game. */
 	private JButton startGameBtn,b0,b1,b2,b3,b4,b5,b6,b7,b8;
+	/* Fonts */
 	private Font playerTitleFont, playerNamesFont, playerMarkerFont, currentPlayerFont;
+	/**
+	 * Contructor for GameView.
+	 * @param: Object of the class GameControl
+	 * */
 	public GameView(GameControl inControl){
 		_GC = inControl;
 		this.setVisible(true);
@@ -83,7 +91,7 @@ public class GameView extends JFrame implements Observer{
 		gameBoard.setLayout(new GridLayout(3,3));
 		gameBoard.setPreferredSize(new Dimension(400,400));
 		this.add(gameBoard, BorderLayout.CENTER);
-		//Here we create and add all the game's buttons. And asigning each one a name. That name will ens up in the Model
+		//Here we create and add all the game's buttons. And assigning each one a name. That name will end up in the Model
 		//for mapping the buttons.
 		b0 = new JButton();
 		b0.addActionListener(_GC);
@@ -132,7 +140,9 @@ public class GameView extends JFrame implements Observer{
 		//resize the window to fit the content.
 		this.pack();
 	}	
-	
+	/**Method that runs with the Observer:Observable framework.
+	 * Every time its updated in the model this method will run in View.
+	 * */
 	public void update(Observable o, Object arg) {
 		GameModel updateModel = (GameModel)o;
 		if(updateModel.playerOne != null && updateModel.playerTwo != null){
@@ -185,6 +195,9 @@ public class GameView extends JFrame implements Observer{
 			b7.setText(null);
 			b8.setEnabled(true);
 			b8.setText(null);
+		}
+		if(updateModel.noOneHasWon){
+			JOptionPane.showMessageDialog(null, "Ingen har vunnit, spela igen om du törs!");			
 		}
 	}
 }

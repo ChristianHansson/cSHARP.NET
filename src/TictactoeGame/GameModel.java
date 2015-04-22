@@ -8,12 +8,27 @@ public class GameModel extends Observable {
 	
 	public String [] btnValues = new String[9];
 	public int [][] winCombos = new int[][] {
-			{0,1,2},{3,4,5},{6,7,8},//Horizontal kriteria of win.
-			{0,3,6},{1,4,7},{2,5,8},//Vertical kriteria of win.
-			{2,4,6},{0,4,8}//Diagonal kreiteria of win.
+			{0,1,2},{3,4,5},{6,7,8},//Horizontal criteria of win.
+			{0,3,6},{1,4,7},{2,5,8},//Vertical criteria of win.
+			{2,4,6},{0,4,8}//Diagonal criteria of win.
 			};
 	
 	public boolean win = false;
+	public boolean noOneHasWon = false;
+	public String playerOne;
+	public String playerTwo;
+	public boolean isPlayersSet = false;
+	public boolean turn = true;
+	
+	public boolean checkIfNoOneHasWon(){
+		return noOneHasWon;
+	}
+	public void setIfNoOneHasWon(){
+		noOneHasWon = true;
+		setChanged();
+		notifyObservers();
+	}
+	
 	public void winBecomesTrue(String inPlayer){
 		win = true;
 		setChanged();
@@ -35,9 +50,6 @@ public class GameModel extends Observable {
 	/*
 	 * Represents players names.
 	 * */
-	public String playerOne;
-	public String playerTwo;
-	public boolean isPlayersSet = false;
 	public void playersIsSet(){
 		if(playerOne != null && playerTwo != null){		
 			isPlayersSet = true;
@@ -51,7 +63,6 @@ public class GameModel extends Observable {
 	/*
 	 * Variable that is true if its playerOne's turn
 	 * */
-	public boolean turn = true;
 	/*
 	 * Will return variable turn.
 	 * */
@@ -100,6 +111,7 @@ public class GameModel extends Observable {
 		playerTwo = null;
 		turn = true;
 		win = false;
+		noOneHasWon = false;
 		for(int i = 0; i < btnValues.length; i++){
 			btnValues[i] = null;
 		}
