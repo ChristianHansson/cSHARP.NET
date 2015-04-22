@@ -26,7 +26,7 @@ public class GameView extends JFrame implements Observer{
 	/* Fonts */
 	private Font playerTitleFont, playerNamesFont, playerMarkerFont, currentPlayerFont;
 	/**
-	 * Contructor for GameView.
+	 * Constructor for GameView.
 	 * @param: Object of the class GameControl
 	 * */
 	public GameView(GameControl inControl){
@@ -196,7 +196,7 @@ public class GameView extends JFrame implements Observer{
 			b8.setText(null);
 		}
 		if(updateModel.noOneHasWon){
-			JOptionPane.showMessageDialog(null, "Ingen har vunnit, spela igen om du törs!");			
+			JOptionPane.showMessageDialog(null, "Oavgjort, spela igen om du törs!");			
 		}
 	}
 }

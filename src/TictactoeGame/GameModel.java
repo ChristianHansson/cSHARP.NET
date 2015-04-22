@@ -22,7 +22,7 @@ public class GameModel extends Observable {
 	/* sting that will hold the name of playertwo in the current game. */
 	public String playerTwo;
 	/* value that stands for if both usernames is set. */
-	public boolean isPlayerNamessSet = false;
+	public boolean isPlayerNamesSet = false;
 	/* Value that represents who's turn it is. */
 	public boolean turn = true;
 	/* if this value becomes true a new game will be created. */
@@ -47,7 +47,7 @@ public class GameModel extends Observable {
 	 * */
 	public void playersIsSet(){
 		if(playerOne != null && playerTwo != null){		
-			isPlayerNamessSet = true;
+			isPlayerNamesSet = true;
 			setChanged();
 			notifyObservers();
 		}
@@ -55,7 +55,7 @@ public class GameModel extends Observable {
 	/**Returns true or false depending on if players names is set.
 	 * */
 	public boolean checkPlayerNames(){
-		return isPlayerNamessSet;
+		return isPlayerNamesSet;
 	}
 	/**Method will run if no one has won. notifying the observers.
 	 * */
