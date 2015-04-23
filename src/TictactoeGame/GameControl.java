@@ -49,6 +49,8 @@ public class GameControl implements ActionListener{
 					}
 					/* This will run every time a game button is pressed. To se if a player has won or not. */
 					checkForWinControl();
+					/* This will run every time a gamebutton is pressed. The purpose is to see if noone has won.
+					 * If noone has won this will return true and if a player has won it will return false. */
 					if(hasNoOneWon()){
 						_GM.setIfNoOneHasWon();
 					}
